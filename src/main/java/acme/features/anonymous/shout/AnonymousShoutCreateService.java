@@ -1,5 +1,6 @@
 package acme.features.anonymous.shout;
 
+import java.time.Instant;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "author", "text", "info");
+		request.unbind(entity, model, "author", "text", "info", "xxxis.xxx1", "xxxis.xxx2", "xxxis.xxx3.currency", "xxxis.xxx3.amount", "xxxis.xxx4");
 	}
 
 	@Override
@@ -51,14 +52,22 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		
 		Shout result;
 		Date moment;
+		/*Money money;
+		Xxxis xxxis;
+		
+		money = new Money();
+		xxxis = new Xxxis();*/
 
 		moment = new Date(System.currentTimeMillis()-1);
+		
+		//xxxis.setXxx3(money);
 		
 		result = new Shout();
 		result.setAuthor("");
 		result.setText("");
 		result.setMoment(moment);
 		result.setInfo("");
+		//result.setXxxis(xxxis);
 		
 		return result;
 	}
@@ -71,6 +80,20 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
         
         final CustomisationParameter params = this.repository.findSpam().get(0);
 
+		String xxx1;
+		String xxx2;
+		String currency;
+		String amount;
+		String xxx4;
+		
+		final Date ahora = Date.from(Instant.now());
+		
+		xxx1 = request.getModel().getString("xxxis.xxx1");
+		xxx2 = request.getModel().getString("xxxis.xxx2");
+		currency = request.getModel().getString("xxxis.xxx3.currency");
+		amount = request.getModel().getString("xxxis.xxx3.amount");
+		xxx4 = request.getModel().getString("xxxis.xxx4");
+
         if (!errors.hasErrors("author")) {
             errors.state(request, !SpamDetect.isSpamText(entity.getAuthor(),params), "author", "anonymous.shout.error.spam");
         }
@@ -78,18 +101,70 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
         if (!errors.hasErrors("text")) {
             errors.state(request, !SpamDetect.isSpamText(entity.getText(), params), "text", "anonymous.shout.error.spam");
         }
-
+ 
+        if (!errors.hasErrors("xxxis.xxx1")) {
+            errors.state(request, !xxx1.isEmpty() , "xxxis.xxx1", "anonymous.shout.error.xxxis.xxx1");
+        }
+        
+        if (!errors.hasErrors("xxxis.xxx2")) {
+            errors.state(request, !xxx2.isEmpty(), "xxxis.xxx2", "anonymous.shout.error.xxxis.xxx2");
+        }
+        
+        if (!errors.hasErrors("xxxis.xxx3.currency")) {
+            errors.state(request, !currency.isEmpty(), "xxxis.xxx3.currency", "anonymous.shout.error.xxxis.xxx3.currency");
+        }
+        
+        if (!errors.hasErrors("xxxis.xxx3.amount")) {
+            errors.state(request, !amount.isEmpty(), "xxxis.xxx3.amount", "anonymous.shout.error.xxxis.xxx3.amount");
+        }
+        
+        if (!errors.hasErrors("xxxis.xxx1")) {
+            errors.state(request, xxx1.matches("^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\\\d\\\\d$") , "xxxis.xxx1", "anonymous.shout.error.xxxis.xxx1-pattern");
+        }
+        
+        if (!errors.hasErrors("xxxis.xxx3.currency")) {
+            errors.state(request, (currency.trim().equals("EUR")||currency.trim().equals("USD")), "xxxis.xxx3.currency", "anonymous.shout.error.xxxis.xxx3.currency-only");
+        }
+        
+        if (!errors.hasErrors("xxxis.xxx2")) {
+            errors.state(request, !entity.getXxxis().getXxx2().before(ahora), "xxxis.xxx2", "anonymous.shout.error.xxxis.xxx2.date");
+        }
     }
 
 	@Override
-	public void create(final Request<Shout> request, final Shout entity) {
+public void create(final Request<Shout> request, final Shout entity) {
 		assert request != null;
 		assert entity != null;
+/*		
+		Money money;
+		String currency;
+		Double amount;
+		Xxxis xxxis;
+		String xxx1;
+		Date xxx2;
+		Boolean xxx4;
 		
+		currency = request.getModel().getString("xxxis.xxx3.currency");
+		amount = request.getModel().getDouble("xxxis.xxx3.amount");
+		money = new Money();
+		money.setAmount(amount);
+		money.setCurrency(currency);
+		
+		xxx1 = request.getModel().getString("xxxis.xxx1");
+		xxx2 = request.getModel().getDate("xxxis.xxx2");
+		xxx4 = request.getModel().getBoolean("xxxis.xxx4");
+		xxxis = new Xxxis();
+		xxxis.setXxx1(xxx1);
+		xxxis.setXxx2(xxx2);
+		xxxis.setXxx3(money);
+		xxxis.setXxx4(xxx4);
+		
+		this.repository.save(xxxis);
+*/
 		Date moment;
-		
 		moment = new Date(System.currentTimeMillis()-1);
 		entity.setMoment(moment);
+		this.repository.save(entity.getXxxis());
 		this.repository.save(entity);
 	}
 	
