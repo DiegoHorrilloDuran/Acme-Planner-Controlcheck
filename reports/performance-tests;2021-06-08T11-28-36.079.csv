@@ -1,6 +1,0 @@
-timestamp,test-class,test-method,time,description,result
-2021-06-08 11:29:09.902,acme.testing.anonymous.shout.AnonymousShoutListTest,listAllShouts,3471,"[1] recordIndex=0, author=John Doe, text=shout1, info=null, xxx1=01/02/2022, xxx2=2022/02/01 15:00, xxx3=USD 10.22, xxx4=true",OK
-2021-06-08 11:29:12.663,acme.testing.anonymous.shout.AnonymousShoutListTest,listAllShouts,2440,"[2] recordIndex=1, author=Jane Doe, text=shout2, info=http://www.example.org, xxx1=02/02/2022, xxx2=2022/02/02 15:00, xxx3=EUR 200.50, xxx4=true",OK
-2021-06-08 11:29:15.347,acme.testing.anonymous.shout.AnonymousShoutListTest,listAllShouts,2431,"[3] recordIndex=2, author=John Doe, text=shout3, info=null, xxx1=02/02/2022, xxx2=2022/03/02 15:00, xxx3=USD 50.99, xxx4=true",OK
-2021-06-08 11:29:18.185,acme.testing.anonymous.shout.AnonymousShoutListTest,listAllShouts,2562,"[4] recordIndex=3, author=Jane Doe, text=shout4, info=http://www.example.org, xxx1=02/02/2022, xxx2=2022/04/02 15:00, xxx3=EUR 0.01, xxx4=true",OK
-2021-06-08 11:29:22.664,acme.testing.anonymous.shout.AnonymousShoutListTest,listAllNegative,4209,"[1] recordIndex=0, path=/anonymous/shout/list",OK

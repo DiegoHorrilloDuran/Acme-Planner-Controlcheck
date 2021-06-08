@@ -116,8 +116,7 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
         	if(am<=0) {
         		errors.state(request, am>0 , "xxxis.xxx3.amount", "anonymous.shout.error.xxxis.xxx3.amount.positive");
         	}else {
-        		errors.state(request, amount.length()<=13 , "xxxis.xxx3.amount", "anonymous.shout.error.xxxis.xxx3.amount.digits");
-            	
+        		
         		if(amount.contains(".")) {
         			final int indexOfDecimal = amount.indexOf(".");
         			final String entero = amount.substring(0,indexOfDecimal);
@@ -130,7 +129,10 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
         			final String decimal = amount.substring(indexOfDecimal);
         			
         			errors.state(request, (entero.length()<=10 && decimal.length()<=3) , "xxxis.xxx3.amount", "anonymous.shout.error.xxxis.xxx3.amount.digits");
-        		}
+        		} else {
+        			
+        			errors.state(request, amount.length()<=10 , "xxxis.xxx3.amount", "anonymous.shout.error.xxxis.xxx3.amount.digits");
+                }
         		
             }
         }
