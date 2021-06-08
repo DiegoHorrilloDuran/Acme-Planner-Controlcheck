@@ -52,22 +52,14 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		
 		Shout result;
 		Date moment;
-		/*Money money;
-		Xxxis xxxis;
-		
-		money = new Money();
-		xxxis = new Xxxis();*/
 
 		moment = new Date(System.currentTimeMillis()-1);
-		
-		//xxxis.setXxx3(money);
 		
 		result = new Shout();
 		result.setAuthor("");
 		result.setText("");
 		result.setMoment(moment);
 		result.setInfo("");
-		//result.setXxxis(xxxis);
 		
 		return result;
 	}
@@ -118,8 +110,33 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
             errors.state(request, !amount.isEmpty(), "xxxis.xxx3.amount", "anonymous.shout.error.xxxis.xxx3.amount");
         }
         
+        if (!errors.hasErrors("xxxis.xxx3.amount")) {
+        	
+        	final Double am = new Double(amount.replace(',','.'));
+        	if(am<=0) {
+        		errors.state(request, am>0 , "xxxis.xxx3.amount", "anonymous.shout.error.xxxis.xxx3.amount.positive");
+        	}else {
+        		errors.state(request, amount.length()<=13 , "xxxis.xxx3.amount", "anonymous.shout.error.xxxis.xxx3.amount.digits");
+            	
+        		if(amount.contains(".")) {
+        			final int indexOfDecimal = amount.indexOf(".");
+        			final String entero = amount.substring(0,indexOfDecimal);
+        			final String decimal = amount.substring(indexOfDecimal);
+        			errors.state(request, (entero.length()<=10 && decimal.length()<=3) , "xxxis.xxx3.amount", "anonymous.shout.error.xxxis.xxx3.amount.digits");
+        		
+        		}else if(amount.contains(",")) {
+        			final int indexOfDecimal = amount.indexOf(",");
+        			final String entero = amount.substring(0,indexOfDecimal);
+        			final String decimal = amount.substring(indexOfDecimal);
+        			
+        			errors.state(request, (entero.length()<=10 && decimal.length()<=3) , "xxxis.xxx3.amount", "anonymous.shout.error.xxxis.xxx3.amount.digits");
+        		}
+        		
+            }
+        }
+        
         if (!errors.hasErrors("xxxis.xxx1")) {
-            errors.state(request, xxx1.matches("^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\\\d\\\\d$") , "xxxis.xxx1", "anonymous.shout.error.xxxis.xxx1-pattern");
+            errors.state(request, xxx1.matches("^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$") , "xxxis.xxx1", "anonymous.shout.error.xxxis.xxx1-pattern");
         }
         
         if (!errors.hasErrors("xxxis.xxx3.currency")) {
@@ -135,32 +152,7 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 public void create(final Request<Shout> request, final Shout entity) {
 		assert request != null;
 		assert entity != null;
-/*		
-		Money money;
-		String currency;
-		Double amount;
-		Xxxis xxxis;
-		String xxx1;
-		Date xxx2;
-		Boolean xxx4;
-		
-		currency = request.getModel().getString("xxxis.xxx3.currency");
-		amount = request.getModel().getDouble("xxxis.xxx3.amount");
-		money = new Money();
-		money.setAmount(amount);
-		money.setCurrency(currency);
-		
-		xxx1 = request.getModel().getString("xxxis.xxx1");
-		xxx2 = request.getModel().getDate("xxxis.xxx2");
-		xxx4 = request.getModel().getBoolean("xxxis.xxx4");
-		xxxis = new Xxxis();
-		xxxis.setXxx1(xxx1);
-		xxxis.setXxx2(xxx2);
-		xxxis.setXxx3(money);
-		xxxis.setXxx4(xxx4);
-		
-		this.repository.save(xxxis);
-*/
+
 		Date moment;
 		moment = new Date(System.currentTimeMillis()-1);
 		entity.setMoment(moment);

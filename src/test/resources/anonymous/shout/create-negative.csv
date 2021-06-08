@@ -8,3 +8,12 @@ recordIndex,author,text,info
 0,Antonio, viagra,
 0,Antonio, viagra nigeria hola, http://www.example.com
 0,A, viagra, asp
+0,Mario,Shout,,,01/01/2022 11:00,EUR,0.01,true
+0,Mario,Shout,,00/00/1900,01/01/2022 11:00,EUR,0.01,true
+0,Mario,Shout,,01/01/1900,,EUR,0.01,true
+0,Mario,Shout,,01/01/1900,01/01/2022 11:00,,0.01,true
+0,Mario,Shout,,01/01/1900,01/01/2022 11:00,7,0.01,true
+0,Mario,Shout,,01/01/1900,01/01/2022 11:00,eur,0.01,true
+0,Mario,Shout,,01/01/1900,01/01/2022 11:00,EUR,,true
+0,Mario,Shout,,01/01/1900,01/01/2022 11:00,EUR,-0.01,true
+0,Mario,Shout,,01/01/1900,01/01/2022 11:00,EUR,0.01,

@@ -32,3 +32,5 @@ anonymous.shout.error.xxxis.xxx4 = No puede ser nulo
 anonymous.shout.error.xxxis.xxx1-pattern = Debe respetarse el patrón dado en el placeholder
 anonymous.shout.error.xxxis.xxx3.currency-only = Debe elegir entre las divisas dadas en el placeholder
 anonymous.shout.error.xxxis.xxx2.date = Esta fecha debe ser futura
+anonymous.shout.error.xxxis.xxx3.amount.positive = El valor debe ser > 0
+anonymous.shout.error.xxxis.xxx3.amount.digits = Debe tener 10 digitos y 2 decimales

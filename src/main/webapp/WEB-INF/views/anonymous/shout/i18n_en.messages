@@ -32,3 +32,5 @@ anonymous.shout.error.xxxis.xxx4 = Must not be null
 anonymous.shout.error.xxxis.xxx1-pattern = You have to match the pattern in the placeholder
 anonymous.shout.error.xxxis.xxx3.currency-only = You only can take the currency in the placeholder
 anonymous.shout.error.xxxis.xxx2.date = this date must be in future
+anonymous.shout.error.xxxis.xxx3.amount.positive = Value must be > 0
+anonymous.shout.error.xxxis.xxx3.amount.digits = Must have 10 digits and 2 decimals
