@@ -352,10 +352,10 @@ style=wordwrap</panel_attributes>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Xxxs1
 --
-+ moment: Date(NotNull, Temporal(TIMESTAMP), Past)
-+ author: String (NotBlank)
-+ text: String (NotBlank)
-+ info: String (URL)</panel_attributes>
++ xxx1: String (NotBlank)
++ xxx2: Date(NotNull, Temporal(TIMESTAMP), Past)
++ xxx3: Money (NotNull)
++ xxx4: Boolean (NotNull)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
